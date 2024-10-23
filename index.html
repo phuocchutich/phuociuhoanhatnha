@@ -8,6 +8,9 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="rotate-message" id="rotateMessage">
+        Vui lòng xoay ngang màn hình để tiếp tục!
+    </div>
     <div class="loading">
         <div class="boxHeartImg">
             <div class="heartItem item1">
@@ -40,5 +43,22 @@
             </div>
         </div>
     </div>
+    <script>
+        function checkOrientation() {
+            if (window.innerHeight > window.innerWidth) {
+                // Nếu màn hình đang ở chế độ dọc, hiển thị thông báo và ẩn nội dung trang
+                document.getElementById('rotateMessage').style.display = 'block';
+                document.querySelector('.loading').style.display = 'none';
+            } else {
+                // Nếu màn hình đang ở chế độ ngang, hiển thị nội dung trang và ẩn thông báo
+                document.getElementById('rotateMessage').style.display = 'none';
+                document.querySelector('.loading').style.display = 'block';
+            }
+        }
+    
+        // Kiểm tra hướng màn hình khi tải trang và khi thay đổi kích thước
+        window.addEventListener('resize', checkOrientation);
+        window.addEventListener('load', checkOrientation);
+    </script>
 </body>
 </html>
